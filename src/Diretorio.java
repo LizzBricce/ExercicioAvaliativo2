@@ -19,11 +19,11 @@ public class Diretorio implements IArquivo {
     public String getConteudo() {
         StringBuilder conteudo = new StringBuilder();
         conteudo.append(nome).append("/\n"); // Nome do diretório raiz
-        gerarConteudo(conteudo, "", true);
+        gerarConteudo(conteudo, "");
         return conteudo.toString();
     }
 
-    private void gerarConteudo(StringBuilder conteudo, String prefixo, boolean ultimo) {
+    private void gerarConteudo(StringBuilder conteudo, String prefixo) {
         int tamanho = arquivos.size();
         for (int i = 0; i < tamanho; i++) {
             IArquivo arquivo = arquivos.get(i);
@@ -41,7 +41,7 @@ public class Diretorio implements IArquivo {
             } else if (arquivo instanceof Diretorio) {
                 conteudo.append(arquivo.getNome()).append("/\n");
                 String novoPrefixo = prefixo + (ultimoItem ? "    " : "│   ");
-                ((Diretorio) arquivo).gerarConteudo(conteudo, novoPrefixo, ultimoItem);
+                ((Diretorio) arquivo).gerarConteudo(conteudo, novoPrefixo);
             }
         }
     }
