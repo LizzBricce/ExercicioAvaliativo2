@@ -1,4 +1,6 @@
-public class Documento implements IArquivo{
+package Model;
+
+public class Documento implements IArquivo {
     private String nome;
     private String conteudo;
 
